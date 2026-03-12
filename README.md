@@ -1,70 +1,88 @@
-# Getting Started with Create React App
+# Speak, Shakespeare | Frontend Interface
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A sophisticated, character-level generative text interface that bridges 16th-century literature with modern deep learning. This React-based web application provides a responsive, thematic UI for interacting with a custom-trained **Gated Recurrent Unit (GRU)** model trained on the complete works of William Shakespeare.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+##  Architecture Overview
 
-### `npm start`
+The frontend is designed as a lightweight, state-driven interface that handles user input, real-time parameter tuning, and asynchronous communication with the backend service.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Technical Stack
+* **Framework:** React.js (Functional Components & Hooks)
+* **Styling:** CSS3 with Glassmorphism and Responsive Design
+* **Typography:** Google Fonts integration (*IM Fell English*)
+* **Deployment:** [Vercel](https://speak-shakespeare.vercel.app/)
+* **API Communication:** Asynchronous Fetch API
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+##  Key Features
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* **Custom Parameter Control:**
+    * **Seed Text:** Dynamic input field to initialize the RNN hidden state.
+    * **Length Control:** Precise character-count adjustment for the generated output.
+    * **Temperature Scaling:** A range slider ($0.1$ to $1.0$) to control the Boltzmann distribution sampling, allowing users to balance between deterministic and creative text generation.
+* **Historical Aesthetic:** A meticulously crafted "Parchment" UI utilizing a historical color palette (`#f5e6c8`, `#2c1810`) and serif typography.
+* **Adaptive Glassmorphism:** A modern, semi-transparent response container using `backdrop-filter: blur` and `rgba` overlays for the generated Shakespearean prose.
+* **Responsive Design:** Fluid layouts using `rem` units and Flexbox to ensure a seamless experience across all device scales.
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+##  Installation & Setup
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Prerequisites
+* **Node.js** (v18.0.0 or higher)
+* **npm** or **yarn**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Local Development
 
-### `npm run eject`
+1.  **Clone the Repository:**
+    ```bash
+    git clone [https://github.com/your-username/shakespeare-frontend.git](https://github.com/your-username/shakespeare-frontend.git)
+    cd shakespeare-frontend
+    ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+2.  **Install Dependencies:**
+    ```bash
+    npm install
+    ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+3.  **Execute Start Script:**
+    ```bash
+    npm start
+    ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+##  API Consumption
 
-## Learn More
+The frontend communicates with the production backend via the following specification:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+**Base URL:** `https://shakespeare-gen-backend.onrender.com`  
+**Endpoint:** `GET /generate`
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+| Query Parameter | React State | Type | Description |
+| :--- | :--- | :--- | :--- |
+| `text` | `input` | `string` | The initial string to seed the GRU model. |
+| `num_chars` | `wordCount` | `int` | Total number of characters to be generated. |
+| `temperature` | `temperature`| `float` | Sampling variance ($0.1$ - $1.0$). |
 
-### Code Splitting
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+##  Design Specifications
 
-### Analyzing the Bundle Size
+* **Background:** `#f5e6c8` (Parchment)
+* **Primary Text:** `#2c1810` (Iron Gall Ink)
+* **Accent:** `#8b4513` (Saddle Brown)
+* **Input Fields:** `#e8d5b0` (Tanned Vellum)
+* **Response Box:** Glassmorphic container with `overflow-y: auto` for handling extensive text generation.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+---
 
-### Making a Progressive Web App
+##  Performance Note
+This application interfaces with a backend hosted on **Render’s Free Tier**. If the service has been inactive, the initial "Translate" request may trigger a "cold start," resulting in a latency of 30–50 seconds while the server instance spins up.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+---
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+**Would you like me to help you refine the CSS file to match these design specifications exactly?**
