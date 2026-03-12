@@ -6,7 +6,7 @@ function App() {
   const [temperature, setTemperature] = useState(0.5);
   const [wordCount, setWordCount] = useState(200);
   async function handleTranslate(){
-    const res= await fetch(`http://localhost:8000/generate?text=${input}&num_chars=${wordCount}&temperature=${temperature}`);
+    const res= await fetch(`https://shakespeare-gen-backend.onrender.com/generate?text=${input}&num_chars=${wordCount}&temperature=${temperature}`);
     const data= await res.json();
     setResponse(data.generated_text);
   }
