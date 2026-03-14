@@ -84,5 +84,3 @@ The frontend communicates with the production backend via the following specific
 This application interfaces with a backend hosted on **Render’s Free Tier**. If the service has been inactive, the initial "Translate" request may trigger a "cold start," resulting in a latency of 30–50 seconds while the server instance spins up.
 
 ---
-
-**Would you like me to help you refine the CSS file to match these design specifications exactly?**
